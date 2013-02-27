@@ -1,3 +1,6 @@
+
+body{max-width:1023px}
+
 .container_6_768{width:100%;}
 
 .col_6_768,
@@ -7,9 +10,13 @@
 .col_2_768,
 .col_1_768{float:left; margin:0 0.5%;}
 
-.col_6_768{width:99%;}
-.col_5_768{width:82.333333333333%;}
-.col_4_768{width:65.666666666667%;}
-.col_3_768{width:49%;}
-.col_2_768{width:32.333333333333%;}
-.col_1_768{width:15.666666666667%;}
+.col_1_768{width:15.833333333333%;}
+.col_2_768{width:32.666666666667%;}
+.col_3_768{width:49.5%;}
+.col_4_768{width:66.333333333333%;}
+.col_5_768{width:83.166666666667%;}
+.col_6_768{width:100%;}
+
+
+.alpha_768{margin-left:0 !important;}
+.omega_768{margin-right:0 !important;}

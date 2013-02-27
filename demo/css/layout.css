@@ -1,9 +1,12 @@
-.container_8_1024{max-width:1024px; width:100%;}
+
 .outline{outline:1px solid green; float:left; margin:10px;}
-.bloque{float:left; padding: 15px 0; margin-bottom:10px !important;}
+.bloque{float:left; min-height:30px; padding-top:10px; margin-bottom:10px !important;}
 .red{background:red;}
 .blue{background:blue;}
 .green{background:green;}
 .yellow{background:yellow;}
 .white{background:white;}
 .black{background:black; color:white;}
+
+.alpha{margin-left:0 !important; }
+.omega{margin-right:0 !important; }

@@ -1,10 +1,14 @@
-body{min-width:320px;}
-.container_3_320{width:100%; }
+body{max-width:767px}
+
+.container_3_320{width:100%;}
 
 .col_3_320,
 .col_2_320,
 .col_1_320{float:left; margin:0 0.5%;}
 
-.col_3_320{width:99%;}
-.col_2_320{width:65.666666666667%;}
-.col_1_320{width:32.333333333333%;}
+.col_1_320{width:32.666666666667%;}
+.col_2_320{width:66.333333333333%;}
+.col_3_320{width:100%;}
+
+.alpha_320{margin-left:0 !important;}
+.omega_320{margin-right:0 !important;}

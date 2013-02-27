@@ -1,4 +1,4 @@
-body{max-width:1280px}
+body{max-width:1260px}
 
 .container_8_1024{width:100%;}
 
@@ -19,6 +19,7 @@ body{max-width:1280px}
 .col_6_1024{width:74.75%;}
 .col_7_1024{width:87.375%;}
 .col_8_1024{width:100%;}
+
 
 
 
@@ -51,5 +52,5 @@ body{max-width:1280px}
 
 
 
-.alpha{margin-left:0 !important;}
-.omega{margin-right:0 !important;}
+.alpha_1024{margin-left:0 !important;}
+.omega_1024{margin-right:0 !important;}
