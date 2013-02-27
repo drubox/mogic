@@ -1,0 +1,55 @@
+body{max-width:1280px}
+
+.container_8_1024{width:100%;}
+
+.col_8_1024,
+.col_7_1024,
+.col_6_1024,
+.col_5_1024,
+.col_4_1024,
+.col_3_1024,
+.col_2_1024,
+.col_1_1024{float:left; margin:0 0.5%;}
+
+.col_1_1024{width:11.625%;}
+.col_2_1024{width:24.25%;}
+.col_3_1024{width:36.875%;}
+.col_4_1024{width:49.5%;}
+.col_5_1024{width:62.125%;}
+.col_6_1024{width:74.75%;}
+.col_7_1024{width:87.375%;}
+.col_8_1024{width:100%;}
+
+
+
+.col_6_1024 .col_8_1024,
+.col_6_1024 .col_7_1024,
+.col_6_1024 .col_6_1024,
+.col_6_1024 .col_5_1024,
+.col_6_1024 .col_4_1024,
+.col_6_1024 .col_3_1024,
+.col_6_1024 .col_2_1024,
+.col_6_1024 .col_1_1024{float:left; margin:0 0.6%;}
+
+.col_6_1024 .col_1_1024{width:15.6666667%;}
+.col_6_1024 .col_2_1024{width:32.5%;}
+.col_6_1024 .col_3_1024{width:49.4%;}
+.col_6_1024 .col_4_1024{width:66.3%;}
+.col_6_1024 .col_5_1024{width:83.12%;}
+.col_6_1024 .col_6_1024{width:100%;}
+
+
+
+.col_2_1024 .col_2_1024,
+.col_2_1024 .col_1_1024{float:left; margin:0 2%;}
+
+.col_2_1024 .col_1_1024{width:48%;}
+.col_2_1024 .col_2_1024{width:100%;}
+
+
+
+
+
+
+.alpha{margin-left:0 !important;}
+.omega{margin-right:0 !important;}
