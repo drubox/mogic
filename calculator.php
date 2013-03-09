@@ -13,8 +13,11 @@ $full_width =  $mogic->get_full_width_from_form();
 $cols =  $mogic->get_cols_from_form();
 $margin =  $mogic->get_margin_from_form();
 $subgrids =  $mogic->get_subgrids_from_form();
-
-$css = $mogic->get_css();
+if ($subgrids < 5){
+  $css = $mogic->get_css();
+} else {
+  print "<b> Five subgrids, even 4, could affect to performance. Two subgrids should be enough for most of grids.</b><br /><br />";
+}
 
 ?>
 <form action="index.php" method="POST">
@@ -28,7 +31,7 @@ $css = $mogic->get_css();
   <input name="full-width" id="full-width" value="<?php print $full_width; ?>" /><br />
   <label for="margin">Margin between cols (%)</label><br />
   <input name="margin" id="margin" value="<?php print $margin; ?>" /><br />
-  <label for="subgrids">How many subgrids:</label><br />
+  <label for="subgrids">How many subgrids (up to 5):</label><br />
   <input name="subgrids" id="subgrids" value="<?php print $subgrids; ?>" /><br />
 
   <label for="css">Css (copy and paste to your file)</label><br />
