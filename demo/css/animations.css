@@ -1,0 +1,6 @@
+.bloque{
+	transition:width .6s linear; 
+    -o-transition:width .6s linear; 
+    -moz-transition:width .6s linear; 
+    -webkit-transition:width .6s linear;
+}
