@@ -21,7 +21,7 @@
 <![endif]-->
 
 <h1> Mogic grid generator (In this version, only work with percentage width) </h1>
-<p>You can see <a href="demo/index.html">one demo (not responsive)</a> and <a href="demo/index2.html">another one (responsive)</a></p>
+<p>You can see <a href="demo/index.html">one demo (not responsive)</a>, <a href="demo/index2.html">another one (responsive)</a> and <a href="demo/index_animations.html">another one (animations)</a></p>
 
 <?php include_once("calculator.php");?>
 
