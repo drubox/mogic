@@ -36,6 +36,8 @@ class Grid{
 
   /**
    * Calculate extra margin.
+   *
+   * return integer
    **/
   private function calculate_extra_margin(){
     return $this->margin * 2 / $this->cols;
@@ -44,6 +46,8 @@ class Grid{
 
   /**
    * Calculate the margin. Useful if margin, by default, is -1.
+   *
+   * return integer
    **/
   private function calculate_margin($margin_from_parent){
     return ($margin_from_parent * $this->full_width) / $this->relative_width_from;
@@ -51,7 +55,9 @@ class Grid{
 
 
   /**
-   * returns the width of one column
+   * Calculates the width of one column
+   *
+   * return integer
    **/
   private function calculate_single_col_width(){
     return ($this->full_width / $this->cols) - ($this->margin * 2) + $this->extra_margin;
@@ -59,7 +65,9 @@ class Grid{
 
 
   /**
-   * Returns the margin
+   * Calculates the margin
+   * 
+   * return integer
    **/
   public function get_margin(){
     return $this->margin;
@@ -69,6 +77,8 @@ class Grid{
   /**
    * Returns the width of the col
    * = colWidth * #Col + ( Margin * 2 * ( #Col - 1 ))
+   * 
+   * return integer
    **/
   public function get_col_width($col){
     return $this->single_col_width * $col + ($this->margin * 2 * ($col - 1));

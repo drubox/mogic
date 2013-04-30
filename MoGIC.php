@@ -45,6 +45,13 @@ class MoGIC{
   }
 
 
+  /**
+   * function let_rec_get_grid_array calculates, recursively, the full grid.
+   *
+   * @param Grid $grid the parent grid
+   * @param integer $iter the number of iterations. The deep in the recursive function
+   * @return Grid 
+   **/
   private function let_rec_get_grid_array($grid, $iter){
     if ($iter == 0){
       return array();
@@ -71,8 +78,11 @@ class MoGIC{
     return $data;
   }
 
-
-
+  /**
+   * function let_rec_get_full_array returns the full grid asociated to a device width.
+   *
+   * @return Array 
+   **/
   private function let_rec_get_full_array(){
 
     $device_width = $this->get_device_width_from_form();
@@ -84,6 +94,13 @@ class MoGIC{
   }
 
 
+  /**
+   * function let_rec_get_css_row prints the grid_array in css.
+   *
+   * @param Grid $grid_array the children grid
+   * @param integer $pre_class the parent's class grid (eg: col_6_1024) to use for childrens (eg: .col_6_1024 .col_4_1024 to paint a col4 inside of a col6)
+   * @return String (CSS) 
+   **/
   private function let_rec_get_css_row($grid_array, $pre_class = ''){
     $css = '';
 
@@ -99,6 +116,12 @@ class MoGIC{
     return $css;
   }
 
+
+  /**
+   * function let_rec_render_css prints the full css for the device. Uses the {@link let_rec_get_css_row} function.
+   *
+   * @return String 
+   **/
   private function let_rec_render_css(){
     $css = "body{max-width:" . $this->get_max_width_from_form() . "px}" . "\n\n";
 
@@ -112,6 +135,11 @@ class MoGIC{
   }
 
 
+  /**
+   * function get_css returns the css. It's only a controller for CSS and is the public function.
+   *
+   * @return String 
+   **/
   function get_css(){
     return $this->let_rec_render_css();
   }
