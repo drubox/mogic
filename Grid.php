@@ -2,6 +2,7 @@
 
 class Grid{
 
+  static $precission = 6
   //Number of cols
   public $cols;
   
@@ -50,7 +51,7 @@ class Grid{
    * return integer
    **/
   private function calculate_margin($margin_from_parent){
-    return ($margin_from_parent * $this->full_width) / $this->relative_width_from;
+    return round(($margin_from_parent * $this->full_width) / $this->relative_width_from, $precission);
   }
 
 
@@ -60,7 +61,7 @@ class Grid{
    * return integer
    **/
   private function calculate_single_col_width(){
-    return ($this->full_width / $this->cols) - ($this->margin * 2) + $this->extra_margin;
+    return round(($this->full_width / $this->cols) - ($this->margin * 2) + $this->extra_margin, $precission);
   }
 
 
