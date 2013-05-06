@@ -131,8 +131,8 @@ class MoGIC{
   private function let_rec_get_css_row($grid_array, $pre_class = ''){
     $css = '';
     if ($pre_class == ""){
-      $css .= '.alpha_' . $this->get_device_width_from_form() . "{margin-left:0;}\n";
-      $css .= '.omega_' . $this->get_device_width_from_form() . "{margin-right:0;}\n\n";
+      $css .= '.alpha_' . $this->get_device_width_from_form() . "{margin-left:0 !important;}\n";
+      $css .= '.omega_' . $this->get_device_width_from_form() . "{margin-right:0 !important;}\n\n";
     }
     $size = count($grid_array);
     foreach($grid_array as $col => $info){
