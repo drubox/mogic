@@ -12,7 +12,7 @@ class MoGIC{
 
     $this->base_grid = new Grid(
       $this->get_cols_from_form(),
-      $this->get_margin_from_form(),
+      $this->get_margin_from_form() * 100 / $this->get_max_width_from_form(),
       $this->get_full_width_from_form(),
       $this->get_full_width_from_form()
     );
@@ -39,6 +39,10 @@ class MoGIC{
     return floatval((isset($_POST['max-width']))?$_POST['max-width']:'1280');
   }
 
+  public function get_min_width_from_form(){
+    return floatval((isset($_POST['min-width']))?$_POST['min-width']:'0');
+  }
+
   public function get_device_width_from_form(){
     return (isset($_POST['device-width']))?$_POST['device-width']:'1024';
   }
@@ -52,7 +56,7 @@ class MoGIC{
   }
 
   public function get_margin_from_form(){
-    return floatval((isset($_POST['margin']))?$_POST['margin']:'0.5');
+    return floatval((isset($_POST['margin']))?$_POST['margin']:'20');
   }
 
   public function get_subgrids_from_form(){
@@ -61,6 +65,10 @@ class MoGIC{
 
   public function get_debug_from_form(){
     return intval((isset($_POST['debug']))?$_POST['debug']:'0');
+  }
+
+  public function get_center_from_form(){
+    return intval((isset($_POST['center']))?$_POST['center']:'1');
   }
 
 
@@ -81,7 +89,7 @@ class MoGIC{
       for($i = 1; $i <= $grid->cols; $i++){
         $children_grid = new Grid(
             $i,
-            $this->get_margin_from_form(),
+            $this->get_margin_from_form() * 100 / $this->get_max_width_from_form(),
             $this->get_full_width_from_form(),
             $grid->get_col_width($i)
           );
@@ -122,10 +130,14 @@ class MoGIC{
    **/
   private function let_rec_get_css_row($grid_array, $pre_class = ''){
     $css = '';
-
+    $size = count($grid_array);
     foreach($grid_array as $col => $info){
       $class = $pre_class . '.g_' . $col . '_' . $this->get_device_width_from_form() . " ";
-      $css .= $class . "{float:left;margin:0 " . $info['margin'] . ";width:" . $info['width'] . ";}";
+      $css .= $class . "{float:left;width:" . $info['width'] . ";";
+      if ($col != $size){
+        $css .= "margin:0 " . $info['margin'] . ";";
+      }
+      $css .= "}";
       $css .= "\n";
       if (!empty($info['childrens'])) {
         $css .= $this->let_rec_get_css_row($info['childrens'], $class);
@@ -143,7 +155,15 @@ class MoGIC{
    * @return String 
    **/
   private function let_rec_render_css(){
-    $css = "body{max-width:" . $this->get_max_width_from_form() . "px}" . "\n\n";
+    $max_width = $this->get_max_width_from_form();
+    $min_width = $this->get_min_width_from_form();
+    $center = $this->get_center_from_form();
+
+    $css = "body{";
+    $css .= (isset($max_width) && !empty($max_width))?"max-width:" . $max_width . "px;":"";
+    $css .= (isset($min_width) && !empty($min_width))?"min-width:" . $min_width . "px;":"";
+    $css .= (isset($center) && $center == 1)?"margin:0 auto;":"";
+    $css .= "}\n\n";
 
     //Generate container
     $css .= '.container_' . $this->get_cols_from_form() . '_' . $this->get_device_width_from_form() . '{width:' . $this->get_full_width_from_form() . '%;}' . "\n\n";
