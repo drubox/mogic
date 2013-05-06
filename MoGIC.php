@@ -6,6 +6,7 @@ require_once "Grid.php";
 class MoGIC{
 
   private $base_grid;
+  private $debug_colors;
 
   function __construct(){
 
@@ -16,6 +17,20 @@ class MoGIC{
       $this->get_full_width_from_form()
     );
 
+    $debug_colors = array(
+      "#FFFFCC",
+      "#FFCCCC",
+      "#FFCCFF",
+      "#FFCC99",
+      "#CCFFCC",
+      "#CCFFFF",
+      "#CCFF99",
+      "#99FFCC",
+      "#CCCC99",
+      "#FFFF99",
+      "#66CCCC",
+      "#FF9999",
+      );
   }
 
 
@@ -25,7 +40,7 @@ class MoGIC{
   }
 
   public function get_device_width_from_form(){
-    return floatval((isset($_POST['device-width']))?$_POST['device-width']:'1024');
+    return (isset($_POST['device-width']))?$_POST['device-width']:'1024';
   }
 
   public function get_full_width_from_form(){
@@ -42,6 +57,10 @@ class MoGIC{
 
   public function get_subgrids_from_form(){
     return floatval((isset($_POST['subgrids']))?$_POST['subgrids']:'2');
+  }
+
+  public function get_debug_from_form(){
+    return intval((isset($_POST['debug']))?$_POST['debug']:'0');
   }
 
 
@@ -105,11 +124,12 @@ class MoGIC{
     $css = '';
 
     foreach($grid_array as $col => $info){
-      $class = $pre_class . '.col_' . $col . '_' . $this->get_device_width_from_form() . " ";
-      $css .= $class . "{float:left; margin: 0 " . $info['margin'] . "; width:" . $info['width'] . ";}";
+      $class = $pre_class . '.g_' . $col . '_' . $this->get_device_width_from_form() . " ";
+      $css .= $class . "{float:left;margin:0 " . $info['margin'] . ";width:" . $info['width'] . ";}";
       $css .= "\n";
       if (!empty($info['childrens'])) {
         $css .= $this->let_rec_get_css_row($info['childrens'], $class);
+        $css .= "\n";
       }
     }
 
@@ -136,7 +156,22 @@ class MoGIC{
 
 
   /**
+   * function let_rec_render_css prints the full css for the device. Uses the {@link let_rec_get_css_row} function.
+   *
+   * @return String 
+   **/
+  private function let_print_debug(){
+    $css = "";
+
+
+
+    return $css;
+  }
+
+
+  /**
    * function get_css returns the css. It's only a controller for CSS and is the public function.
+   *  TODO: This functions, maybe, has to recieve the full parameters...
    *
    * @return String 
    **/
