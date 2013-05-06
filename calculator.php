@@ -33,10 +33,17 @@ if ($subgrids < 5){
   <input name="margin" id="margin" value="<?php print $margin; ?>" /><br />
   <label for="subgrids">How many subgrids (up to 5):</label><br />
   <input name="subgrids" id="subgrids" value="<?php print $subgrids; ?>" /><br />
+  <label for="debug">Do you want debug colours?:</label><br />
+  <select name="debug" id="debug">
+    <option value="0" <?php print (isset($debug) && $debug!=1)?'selected="selected"':''; ?>>NO</option>
+    <option value="1" <?php print (isset($debug) && $debug==1)?'selected="selected"':''; ?>>YES</option>
+  </select>
+
+    <br />
 
   <label for="css">Css (copy and paste to your file)</label><br />
   <textarea name="css" id="css" rows="30" cols="100" readonly="readonly"><?php print $css; ?></textarea><br />
-
+  Tama&ntilde;o: <?php print number_format(intval(strlen($css)) / 1024, 2) . " KB"; ?>
   <input type="submit" value="Send" />
 </form>
 
