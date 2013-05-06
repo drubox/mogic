@@ -12,12 +12,24 @@ class MoGIC{
 
     $this->base_grid = new Grid(
       $this->get_cols_from_form(),
-      $this->get_margin_from_form() * 100 / $this->get_max_width_from_form(),
+      $this->get_margin_from_form() * 100 / $this->get_max_width_from_form() / 2,
       $this->get_full_width_from_form(),
       $this->get_full_width_from_form()
     );
 
-    $debug_colors = array(
+    $this->debug_colors = array(
+      "#FFFFCC",
+      "#FFCCCC",
+      "#FFCCFF",
+      "#FFCC99",
+      "#CCFFCC",
+      "#CCFFFF",
+      "#CCFF99",
+      "#99FFCC",
+      "#CCCC99",
+      "#FFFF99",
+      "#66CCCC",
+      "#FF9999",
       "#FFFFCC",
       "#FFCCCC",
       "#FFCCFF",
@@ -89,7 +101,7 @@ class MoGIC{
       for($i = 1; $i <= $grid->cols; $i++){
         $children_grid = new Grid(
             $i,
-            $this->get_margin_from_form() * 100 / $this->get_max_width_from_form(),
+            $this->get_margin_from_form() * 100 / $this->get_max_width_from_form() / 2,
             $this->get_full_width_from_form(),
             $grid->get_col_width($i)
           );
@@ -131,8 +143,12 @@ class MoGIC{
   private function let_rec_get_css_row($grid_array, $pre_class = ''){
     $css = '';
     if ($pre_class == ""){
-      $css .= '.alpha_' . $this->get_device_width_from_form() . "{margin-left:0;}\n";
-      $css .= '.omega_' . $this->get_device_width_from_form() . "{margin-right:0;}\n\n";
+      $css .= '.alpha_' . $this->get_device_width_from_form() . "{margin-left:0 !important;}\n";
+      $css .= '.omega_' . $this->get_device_width_from_form() . "{margin-right:0 !important;}\n\n";
+
+      if ($this->get_debug_from_form() == 1){
+        $css .= $this->let_print_debug($grid_array);
+      }
     }
     $size = count($grid_array);
     foreach($grid_array as $col => $info){
@@ -175,14 +191,18 @@ class MoGIC{
 
 
   /**
-   * function let_rec_render_css prints the full css for the device. Uses the {@link let_rec_get_css_row} function.
+   * function let_print_debug add some background colors.
    *
    * @return String 
    **/
-  private function let_print_debug(){
+  private function let_print_debug($grid_array = array()){
     $css = "";
 
-
+    foreach($grid_array as $col => $info){
+      $class = '.g_' . $col . '_' . $this->get_device_width_from_form() . " ";
+      $css .= $class . "{background-color:" . $this->debug_colors[$col] . " ;}";
+      $css .= "\n";
+    }
 
     return $css;
   }
