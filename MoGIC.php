@@ -142,6 +142,7 @@ class MoGIC{
    **/
   private function let_rec_get_css_row($grid_array, $pre_class = ''){
     $css = '';
+    $float_str = '';
     if ($pre_class == ""){
       $css .= '.alpha_' . $this->get_device_width_from_form() . "{margin-left:0 !important;}\n";
       $css .= '.omega_' . $this->get_device_width_from_form() . "{margin-right:0 !important;}\n\n";
@@ -149,11 +150,12 @@ class MoGIC{
       if ($this->get_debug_from_form() == 1){
         $css .= $this->let_print_debug($grid_array);
       }
+      $float_str = 'float:left;';
     }
     $size = count($grid_array);
     foreach($grid_array as $col => $info){
       $class = $pre_class . '.g_' . $col . '_' . $this->get_device_width_from_form() . " ";
-      $css .= $class . "{float:left;margin:0" . (($col != $size)?" " . $info['margin']:"") . ";width:" . $info['width'] . ";}";
+      $css .= $class . "{".$float_str."margin:0" . (($col != $size)?" " . $info['margin']:"") . ";width:" . $info['width'] . ";}";
       $css .= "\n";
       if (!empty($info['childrens'])) {
         $css .= $this->let_rec_get_css_row($info['childrens'], $class);
